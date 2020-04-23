@@ -13,7 +13,6 @@ import mimetypes
 import os
 import pkg_resources
 import platform
-from pathlib import Path
 import random
 from secrets import SystemRandom
 import re
@@ -84,7 +83,7 @@ elif getattr(sys, 'frozen', False):
   GM_Globals[GM_GAM_TYPE] = 'pyinstaller'
 else:
   # Source code
-  GM_Globals[GM_GAM_PATH] = os.path.dirname(Path(os.path.realpath(__file__)).parent)
+  GM_Globals[GM_GAM_PATH] = os.path.dirname(os.path.realpath(sys.argv[0]))
   GM_Globals[GM_GAM_TYPE] = 'pythonsource'
 
 def showUsage():
