@@ -126,7 +126,6 @@ import httplib2
 
 httplib2.RETRIES = 5
 
-from passlib.hash import sha512_crypt
 from filelock import FileLock
 
 if platform.system() == 'Linux':
@@ -44030,7 +44029,7 @@ class PasswordOptions():
     if not self.notifyPasswordSet:
       notify[up] = body[up] if self.clearPassword else Msg.CONTACT_ADMINISTRATOR_FOR_PASSWORD
     if self.hashPassword:
-      body[up] = sha512_crypt.hash(body[up], rounds=10000)
+      body[up] = hashlib.sha512(body[up], usedforsecurity=True).hexdigest()
       body['hashFunction'] = 'crypt'
     elif self.b64DecryptPassword:
       if body[up].lower()[:5] in ['{md5}', '{sha}']:

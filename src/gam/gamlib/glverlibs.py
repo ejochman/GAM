@@ -31,7 +31,6 @@ GAM_VER_LIBS = [
   'google-auth',
   'lxml',
   'httplib2',
-  'passlib',
   'pathvalidate',
   'pyscard',
   'yubikey-manager',
